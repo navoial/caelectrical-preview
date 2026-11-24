@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>New Website Proposal | CA Electrical Group</title>
+<meta name="description" content="Website review and proposal for CA Electrical Group: what holds the current site back, and a faster site that shows real jobs from monday.com.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000; --white:#fbfbfd;
+  --ink:#1d1d1f; --ink-2:#6e6e73;
+  --snow:#f5f5f7; --snow-2:#a1a1a6;
+  --line:#d2d2d7; --line-d:#333336;
+  --sun:#f3b61f; --ember:#ff7a1a; --olive:#5f6b12; --ridge:#24300a;
+  --good:#2f8f3a; --bad:#d4351c;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:var(--font);background:var(--black);color:var(--ink);-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+
+.slide{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:72px 28px;position:relative;overflow:hidden}
+.slide.light{background:var(--white);color:var(--ink)}
+.slide.dark{background:var(--black);color:var(--snow)}
+.in{width:100%;max-width:1120px}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+
+h1,h2{margin:0;font-weight:700;letter-spacing:-.035em;line-height:1.04}
+h1{font-size:clamp(44px,7.4vw,96px)}
+h2{font-size:clamp(34px,5.2vw,64px)}
+h3{margin:0;font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+p{margin:0}
+.lead{font-size:clamp(19px,2.1vw,26px);line-height:1.4;font-weight:500;color:var(--ink-2);max-width:34ch;margin-top:20px;letter-spacing:-.02em}
+.dark .lead{color:var(--snow-2)}
+.small{font-size:15px;color:var(--ink-2)}
+.dark .small{color:var(--snow-2)}
+.grad{background:linear-gradient(100deg,var(--sun) 10%,var(--ember) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* reveal: one quiet build per slide */
+.build{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.slide.seen .build{opacity:1;transform:none}
+.slide.seen .build.d2{transition-delay:.15s}
+@media (prefers-reduced-motion:reduce){.build{opacity:1;transform:none;transition:none}}
+
+/* devices */
+.phone{width:min(300px,70vw);aspect-ratio:390/844;border-radius:44px;padding:11px;background:#1d1d1f;box-shadow:0 30px 80px rgba(0,0,0,.25),inset 0 0 0 2px #3a3a3c;flex:none}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:34px}
+.laptop{width:100%;border-radius:14px;padding:10px 10px 0;background:#1d1d1f;box-shadow:0 30px 80px rgba(0,0,0,.28)}
+.laptop img{border-radius:6px 6px 0 0;aspect-ratio:1440/900;object-fit:cover;object-position:top;width:100%}
+.laptop::after{content:"";display:block;height:14px;margin:0 -10px;background:linear-gradient(#2c2c2e,#1d1d1f);border-radius:0 0 14px 14px}
+
+/* layouts */
+.split{display:grid;grid-template-columns:auto 1fr;gap:72px;align-items:center}
+.split.rev{grid-template-columns:1fr auto}
+.split.wide{grid-template-columns:1.25fr 1fr;gap:56px}
+.points{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:22px}
+.points li{font-size:clamp(19px,1.9vw,24px);line-height:1.35;font-weight:500;letter-spacing:-.02em;padding-left:30px;position:relative}
+.points li::before{content:"";position:absolute;left:0;top:.5em;width:12px;height:12px;border-radius:50%;background:var(--bad)}
+.points.good li::before{background:var(--good)}
+.points li span{display:block;font-size:16px;font-weight:400;color:var(--ink-2);margin-top:4px;letter-spacing:0}
+.dark .points li span{color:var(--snow-2)}
+
+/* title */
+.title .logo{width:170px;height:auto;margin:0 auto 40px;background:#fff;border-radius:18px;padding:12px 16px}
+.title .meta{margin-top:36px;font-size:17px;color:var(--snow-2)}
+
+/* big number */
+.huge{font-size:clamp(120px,22vw,300px);font-weight:800;letter-spacing:-.06em;line-height:.9}
+.facts{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;margin-top:52px}
+.facts div{display:grid;gap:4px}
+.facts b{font-size:clamp(30px,3.4vw,44px);font-weight:700;letter-spacing:-.03em}
+.facts span{font-size:15px;color:var(--snow-2)}
+.light .facts span{color:var(--ink-2)}
+
+/* coupons */
+.coupon{border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12);position:relative}
+.coupon .stamp{position:absolute;right:18px;top:18px;background:var(--bad);color:#fff;font-weight:700;font-size:15px;padding:6px 12px;border-radius:8px}
+
+/* stats row */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:56px;text-align:left}
+.stats div{border-top:1px solid var(--line);padding-top:20px}
+.stats b{display:block;font-size:clamp(40px,5vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.stats span{display:block;margin-top:10px;font-size:16px;color:var(--ink-2);line-height:1.35}
+
+/* dev slide */
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px}
+.cols2 h3{margin-bottom:6px}
+.cols2>div{align-content:start}
+.cols2 .points{margin-top:12px;gap:14px}
+.cols2 .points li{font-size:18px}
+
+/* proposal */
+.duo{position:relative;margin:44px auto 0;padding-right:110px;max-width:880px}
+.duo .phone{position:absolute;right:0;bottom:-30px;width:min(220px,30vw)}
+.cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:19px;font-weight:600;color:var(--sun);text-decoration:none}
+.cta:hover{text-decoration:underline}
+.light .cta{color:#0066cc}
+
+/* flow */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:18px;align-items:stretch;margin-top:56px;text-align:left}
+.step{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;gap:14px;align-content:start}
+.step .who{font-size:14px;font-weight:600;color:var(--ink-2)}
+.step h3{font-size:22px}
+.arrow{display:grid;place-items:center;color:var(--ink-2)}
+.arrow svg{width:28px;height:28px}
+.mock{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px;display:grid;gap:8px;background:var(--white)}
+.mock .r{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.mock .chk{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--good)}
+.mock .chk i{width:16px;height:16px;border-radius:4px;background:var(--good);display:inline-grid;place-items:center}
+.mock .chk i::after{content:"";width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.pill{font-size:12.5px;font-weight:600;padding:3px 8px;border-radius:999px;background:#e8f0d0;color:var(--ridge)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ba div{height:54px;border-radius:8px;font-size:12px;display:grid;place-items:center;color:#fff;font-weight:600}
+.ba .b{background:#8a7b62}.ba .a{background:#5f6b12}
+.timer{margin-top:28px;font-size:17px;color:var(--ink-2)}
+
+/* stack */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px;text-align:left}
+.tile{background:#1c1c1e;border-radius:24px;padding:28px 24px;display:grid;gap:14px;align-content:start;min-height:280px}
+.tile .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center}
+.tile .ic svg{width:28px;height:28px}
+.tile h3{font-size:24px;color:#fff}
+.tile p{font-size:16.5px;line-height:1.45;color:var(--snow-2)}
+.tile .who{margin-top:auto;font-size:14px;color:#d6d6db;border-top:1px solid var(--line-d);padding-top:14px}
+
+/* compare */
+.cmp{width:100%;border-collapse:collapse;margin-top:48px;text-align:left;font-size:clamp(16px,1.6vw,19px)}
+.cmp th,.cmp td{padding:18px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp thead th{font-size:15px;font-weight:600;color:var(--ink-2);border-bottom:1px solid var(--ink)}
+.cmp tbody th{font-weight:600;width:18%}
+.cmp td.us{font-weight:600}
+.cmp td .x{color:var(--bad)}
+.cmp td .ok{color:var(--good)}
+
+/* measure */
+.measure{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;text-align:left}
+.measure div{display:grid;gap:10px;align-content:start}
+.measure b{font-size:clamp(30px,3.2vw,42px);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.measure span{font-size:16.5px;color:var(--snow-2);line-height:1.45}
+
+/* next */
+.next{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:left;counter-reset:n}
+.next li{counter-increment:n;border-top:2px solid var(--ink);padding-top:18px;display:grid;gap:8px;align-content:start}
+.next li::before{content:counter(n);font-size:15px;font-weight:700;color:var(--ink-2)}
+.next h3{font-size:22px}
+.next p{font-size:16px;color:var(--ink-2);line-height:1.45}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;background:#0071e3;color:#fff;font-weight:600;font-size:18px;text-decoration:none;margin-top:48px}
+.btn:hover{background:#0077ed}
+
+/* chrome */
+.counter{position:fixed;right:20px;bottom:18px;z-index:10;font-size:13px;font-weight:600;color:#86868b;background:rgba(29,29,31,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:6px 12px;border-radius:999px;color:#f5f5f7}
+.navbtns{position:fixed;right:20px;bottom:56px;z-index:10;display:grid;gap:8px}
+.navbtns button{width:40px;height:40px;border-radius:50%;border:0;background:rgba(29,29,31,.72);color:#fff;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.navbtns svg{width:18px;height:18px}
+@media (hover:none),(max-width:900px){.navbtns{display:none}}
+
+@media (max-width:900px){
+  html{scroll-snap-type:y proximity}
+  .slide{padding:64px 22px}
+  .cmp tbody th{width:auto}
+  .split,.split.rev,.split.wide{grid-template-columns:1fr;gap:40px}
+  .split .phone{margin:0 auto;width:min(250px,64vw)}
+  .split.rev .phone{order:2}
+  .stats{grid-template-columns:1fr 1fr}
+  .cols2{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .arrow svg{transform:rotate(90deg)}
+  .tiles{grid-template-columns:1fr 1fr}
+  .tile{min-height:0}
+  .measure{grid-template-columns:1fr;gap:28px}
+  .next{grid-template-columns:1fr 1fr}
+  .duo{padding-right:70px}
+  .cmp thead{display:none}
+  .cmp,.cmp tbody,.cmp tr,.cmp th,.cmp td{display:block;width:auto}
+  .cmp tr{border-bottom:1px solid var(--line);padding:14px 0}
+  .cmp th,.cmp td{border:0;padding:4px 0}
+  .cmp td::before{content:attr(data-h);display:block;font-size:13px;color:var(--ink-2);font-weight:500}
+}
+@media (max-width:560px){
+  .tiles,.next{grid-template-columns:1fr}
+  .facts{gap:28px}
+}
+
+/* print / PDF: one slide per landscape page */
+@page{size:1280px 720px;margin:0}
+@media print{
+  html{scroll-snap-type:none}
+  .slide{height:720px;min-height:0;page-break-after:always;break-after:page;padding:48px 64px}
+  .build{opacity:1!important;transform:none!important}
+  .counter,.navbtns{display:none}
+  .huge{font-size:220px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide dark title" aria-label="Title">
+  <div class="in center build">
+    <img class="logo" src="../assets/logo.png" alt="California Electrical Group 24/7" width="400" height="204">
+    <h1>A website that brings <span class="grad">more calls.</span></h1>
+    <p class="lead">A review of the current site, the new WordPress draft, and a faster way forward.</p>
+    <p class="meta">CA Electrical Group, San Jose. November 2026.</p>
+  </div>
+</section>
+
+<!-- 2: current site, first screen -->
+<section class="slide light" aria-label="Current site: first screen">
+  <div class="in split">
+    <div class="phone build"><img src="img/cur-mobile-top.jpg" alt="Current website on a phone: headline Licensed, Bonded, Insured over a New York skyline"></div>
+    <div class="build d2">
+      <h2>Today, the first screen doesn't sell.</h2>
+      <ul class="points">
+        <li>The headline doesn't say what you do or where.<span>“Licensed, Bonded, Insured” could be any contractor in any state.</span></li>
+        <li>The photo is New York, not the Bay Area.<span>Brooklyn Bridge behind a San Jose company.</span></li>
+        <li>No rating and no estimate button.<span>Your 658 Google reviews are not visible.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3: speed -->
+<section class="slide dark" aria-label="Current site: speed">
+  <div class="in center build">
+    <div class="huge grad">5.4 s</div>
+    <p class="lead" style="max-width:30ch">until the main image appears on a phone. Google's target is 2.5 seconds.</p>
+    <div class="facts">
+      <div><b>4 MB</b><span>page weight</span></div>
+      <div><b>138</b><span>files to download</span></div>
+      <div><b>48</b><span>scripts</span></div>
+    </div>
+    <p class="small" style="margin-top:40px">Measured on November 23, 2026, on fast Wi-Fi. On mobile data it is slower.</p>
+  </div>
+</section>
+
+<!-- 4: trust -->
+<section class="slide light" aria-label="Current site: trust">
+  <div class="in split wide">
+    <div class="build">
+      <h2>Small things cost trust.</h2>
+      <ul class="points">
+        <li>The special offers expired on September 1.<span>They are still on the home page, as images Google can't read.</span></li>
+        <li>14 reviews with no date or source.<span>Visitors can't check them. Real Google reviews can be shown automatically.</span></li>
+        <li>No real jobs anywhere on the site.<span>Only stock photos, while your monday.com board is full of before-and-after photos.</span></li>
+      </ul>
+    </div>
+    <div class="coupon build d2"><img src="img/cur-coupons-expired.jpg" alt="Three coupons on the current site, each marked Expires 09/01/2026"><span class="stamp">Expired</span></div>
+  </div>
+</section>
+
+<!-- 5: content -->
+<section class="slide light" aria-label="Current site: content">
+  <div class="in build">
+    <h2>Google sees noise, not services.</h2>
+    <p class="lead" style="max-width:40ch">The pages that should bring calls don't exist. Hundreds of pages that don't sell do.</p>
+    <div class="stats">
+      <div><b>71</b><span>blog posts</span></div>
+      <div><b>~45</b><span>generic articles from one template</span></div>
+      <div><b>16</b><span>about parks, museums and Golfland</span></div>
+      <div><b>0</b><span>pages for EV chargers, emergency calls or knob-and-tube</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6: security -->
+<section class="slide dark" aria-label="Current site: security">
+  <div class="in center build">
+    <h2>WordPress needs constant care.</h2>
+    <div class="facts" style="margin-top:56px">
+      <div><b class="grad">10</b><span>plugins visible from outside</span></div>
+      <div><b class="grad">6</b><span>of them for Elementor</span></div>
+      <div><b class="grad">Every week</b><span>core, theme and plugin updates</span></div>
+    </div>
+    <p class="lead" style="max-width:36ch;margin-top:48px">In August 2026, attackers mass-exploited a critical flaw in Elementor Pro to take over WordPress sites. Each plugin is one more door.</p>
+  </div>
+</section>
+
+<!-- 7: the new WordPress draft -->
+<section class="slide light" aria-label="New WordPress draft">
+  <div class="in split wide">
+    <div class="laptop build"><img src="img/dev-desktop-top.jpg" alt="New WordPress draft: headline Licensed Electricians in San Jose and the Bay Area over the Bay Bridge"></div>
+    <div class="build d2">
+      <h2>The new WordPress draft: a good start.</h2>
+      <p class="small" style="margin-top:12px">Work in progress, reviewed on November 23, 2026.</p>
+      <div class="cols2">
+        <div><h3>Good</h3><ul class="points good"><li>City in the headline</li><li>Local photo</li><li>Real Google reviews</li></ul></div>
+        <div><h3>Still missing</h3><ul class="points"><li>No estimate form</li><li>“1,200 reviews” vs 658 on Google</li><li>Text left from a farming template</li><li>Same WordPress upkeep</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8: our proposal -->
+<section class="slide dark" aria-label="Our proposal">
+  <div class="in">
+    <div class="center build">
+      <h2>Call or request an estimate <span class="grad">in two taps.</span></h2>
+      <p class="lead">Service and city in the headline. Your rating up front. A three-step form. Real jobs below.</p>
+      <a class="cta" href="../">Open the prototype <span aria-hidden="true">›</span></a>
+    </div>
+    <div class="duo build d2">
+      <div class="laptop"><img src="img/home-desktop-top.jpg" alt="Proposed design on a laptop"></div>
+      <div class="phone"><img src="img/home-mobile-top.jpg" alt="Proposed design on a phone"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9: monday to website -->
+<section class="slide light" aria-label="Real jobs from monday.com">
+  <div class="in center">
+    <div class="build">
+      <h2>Your real jobs. On the site, automatically.</h2>
+      <p class="lead">The office closes a job in monday.com as usual and ticks one box. The website does the rest.</p>
+    </div>
+    <div class="flow build d2">
+      <div class="step">
+        <span class="who">monday.com</span>
+        <h3>Job is done</h3>
+        <div class="mock">
+          <div class="r"><b>Panel upgrade</b><span class="pill">Done</span></div>
+          <div class="r"><span>Willow Glen</span><span>Nov 20</span></div>
+          <div class="ba"><div class="b">Before</div><div class="a">After</div></div>
+          <span class="chk"><i></i>Show on website</span>
+        </div>
+      </div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="step">
+        <span class="who">Cloudflare</span>
+        <h3>Page is built</h3>
+        <div class="mock"><div class="r"><span>Photos resized</span><span class="chk"><i></i></span></div><div class="r"><span>GPS location removed</span><span class="chk"><i></i></span></div><div class="r"><span>Address hidden</span><span class="chk"><i></i></span></div></div>
+        <p class="small">Only the city is shown. Never the address or the customer’s name.</p>
+      </div>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="step">
+        <span class="who">Website</span>
+        <h3>Job appears in 3 places</h3>
+        <div class="mock">
+          <div class="ba"><div class="b">Before</div><div class="a">After</div></div>
+          <b>Zinsco panel replaced with 200A</b>
+          <div class="r"><span>Willow Glen, San Jose</span><span class="pill">Nov 2026</span></div>
+        </div>
+        <p class="small">Its own project page, the home page feed and the city page, so people searching “panel upgrade Willow Glen” find you.</p>
+      </div>
+    </div>
+    <p class="timer build d2">About 5 minutes from the tick to the live page.</p>
+  </div>
+</section>
+
+<!-- 10: stack -->
+<section class="slide dark" aria-label="Proposed stack">
+  <div class="in center">
+    <div class="build">
+      <h2>Four tools. Each does one job.</h2>
+      <p class="lead">No plugins to update. Nothing on the server for attackers to break into.</p>
+    </div>
+    <div class="tiles build d2">
+      <div class="tile">
+        <span class="ic" style="background:#f6821f"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.6-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1 .5 9z"/></svg></span>
+        <h3>Cloudflare</h3>
+        <p>Hosts the site close to every visitor. Blocks attacks. Runs the forms and sends leads to monday.</p>
+        <span class="who">Runs on its own. You already use it.</span>
+      </div>
+      <div class="tile">
+        <span class="ic" style="background:#7c3aed"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg></span>
+        <h3>Astro</h3>
+        <p>Builds the website as ready-made pages. Fast on any phone, nothing to patch every week.</p>
+        <span class="who">We build and maintain it.</span>
+      </div>
+      <div class="tile">
+        <span class="ic" style="background:#ff3d57"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="5" cy="15" r="2.4"/><circle cx="12" cy="15" r="2.4"/><circle cx="19" cy="15" r="2.4"/></svg></span>
+        <h3>monday.com</h3>
+        <p>Finished jobs become project pages. Every website lead lands on your board with its source.</p>
+        <span class="who">Your office, the way it works today.</span>
+      </div>
+      <div class="tile">
+        <span class="ic" style="background:#f03e2f"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg></span>
+        <h3>Sanity</h3>
+        <p>Change texts, offers, team photos and answers to common questions, like editing a Google Doc.</p>
+        <span class="who">You or your office, whenever you want.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11: compare -->
+<section class="slide light" aria-label="Compared with WordPress">
+  <div class="in build">
+    <h2>Why not stay on WordPress?</h2>
+    <table class="cmp">
+      <thead><tr><th scope="col"></th><th scope="col">WordPress today</th><th scope="col">New stack</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Speed</th><td data-h="WordPress today"><span class="x">5.4 s</span> on a phone</td><td class="us" data-h="New stack">Target <span class="ok">under 2.5 s</span>: pages are ready before anyone asks</td></tr>
+        <tr><th scope="row">Security</th><td data-h="WordPress today">PHP, database, 10 plugins</td><td class="us" data-h="New stack">No server code to break into</td></tr>
+        <tr><th scope="row">Upkeep</th><td data-h="WordPress today">Updates every week, or risk</td><td class="us" data-h="New stack">Nothing for you to update</td></tr>
+        <tr><th scope="row">Editing</th><td data-h="WordPress today">WordPress admin and Elementor</td><td class="us" data-h="New stack">Sanity for texts, monday for jobs</td></tr>
+        <tr><th scope="row">Real jobs</th><td data-h="WordPress today">Uploaded by hand, if at all</td><td class="us" data-h="New stack">From monday, automatically</td></tr>
+        <tr><th scope="row">Hosting</th><td data-h="WordPress today">Paid hosting</td><td class="us" data-h="New stack">Free plans of Cloudflare and Sanity cover a site this size</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 12: measure -->
+<section class="slide dark" aria-label="How we measure">
+  <div class="in build">
+    <h2>How we'll know it works.</h2>
+    <div class="measure">
+      <div><b class="grad">Leads per week</b><span>Calls, estimate requests and panel photos. Four weeks before launch against four weeks after.</span></div>
+      <div><b class="grad">Under 2.5 s</b><span>Main image on a phone, checked with Google's own tools.</span></div>
+      <div><b class="grad">8+ jobs a month</b><span>Posted from monday without a developer.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13: next -->
+<section class="slide light" aria-label="Next steps">
+  <div class="in center build">
+    <h2>Next steps.</h2>
+    <ol class="next">
+      <li><h3>Access</h3><p>monday board, Google Analytics, Search Console and Ads, shared with our email. No passwords.</p></li>
+      <li><h3>Photo day</h3><p>Half a day with your crew, the van and a few jobs. Real faces beat stock photos.</p></li>
+      <li><h3>Build</h3><p>Astro site, monday and Sanity connected. Old pages redirected, so what Google already shows is not lost.</p></li>
+      <li><h3>Launch and measure</h3><p>Switch over when you approve. Weekly lead numbers from day one.</p></li>
+    </ol>
+    <a class="btn" href="../">See the prototype</a>
+    <p style="margin-top:18px"><a class="small" href="CA-Electrical-website-proposal.pdf" download>Download this deck as PDF</a></p>
+  </div>
+</section>
+
+<div class="navbtns" aria-hidden="false">
+  <button type="button" data-go="-1" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 15 6-6 6 6"/></svg></button>
+  <button type="button" data-go="1" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg></button>
+</div>
+<div class="counter" aria-live="polite"><span id="cur">1</span> / <span id="tot">13</span></div>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  document.getElementById('tot').textContent=slides.length;
+  let current=0;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('seen');current=slides.indexOf(e.target);document.getElementById('cur').textContent=current+1;}
+  }),{threshold:.55});
+  slides.forEach(s=>io.observe(s));
+  const go=d=>{const i=Math.max(0,Math.min(slides.length-1,current+d));slides[i].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
+  document.addEventListener('keydown',e=>{
+    if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1)}
+    if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1)}
+    if(e.key==='Home'){e.preventDefault();slides[0].scrollIntoView()}
+    if(e.key==='End'){e.preventDefault();slides[slides.length-1].scrollIntoView()}
+  });
+  document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.go)));
+  window.addEventListener('beforeprint',()=>slides.forEach(s=>s.classList.add('seen')));
+})();
+</script>
+</body>
+</html>
