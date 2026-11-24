@@ -4,82 +4,98 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Website Review and Stack | CA Electrical Group</title>
-<meta name="description" content="Two pages: what holds the current CA Electrical Group website back, and the proposed stack of Cloudflare, Astro, monday.com and Sanity.">
+<title>Website Stack | CA Electrical Group</title>
+<meta name="description" content="How the new CA Electrical Group website works with Cloudflare, Astro, monday.com and Sanity, and how it compares with a WordPress build.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --white:#fbfbfd; --ink:#1d1d1f; --ink-2:#6e6e73; --line:#d2d2d7;
-  --black:#000; --snow:#f5f5f7; --snow-2:#a1a1a6; --card:#1c1c1e; --line-d:#38383a;
-  --sun:#f3b61f; --ember:#ff7a1a; --bad:#d4351c; --good:#30a14e;
+  --black:#000; --snow:#f5f5f7; --snow-2:#a1a1a6; --card:#1c1c1e; --card-2:#2c2c2e; --line-d:#38383a;
+  --sun:#f3b61f; --ember:#ff7a1a; --good:#30a14e; --bad:#d4351c;
+  --cf:#f6821f; --astro:#7c3aed; --monday:#ff3d57; --sanity:#f03e2f; --gh:#6e6e73;
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-snap-type:y mandatory}
 body{margin:0;font-family:var(--font);background:var(--black);color:var(--ink);-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
-img{display:block;max-width:100%}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
 h2,h3,p{margin:0}
-h2{font-size:clamp(36px,4.4vw,60px);font-weight:700;letter-spacing:-.035em;line-height:1.04}
-h3{font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+h2{font-size:clamp(34px,4.2vw,58px);font-weight:700;letter-spacing:-.035em;line-height:1.04}
+h3{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
 .grad{background:linear-gradient(100deg,var(--sun) 10%,var(--ember) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
-
-.slide{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:56px 48px;position:relative}
+.slide{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:52px 48px;position:relative}
 .light{background:var(--white)}
 .dark{background:var(--black);color:var(--snow)}
 .in{width:100%;max-width:1180px}
-.sub{font-size:clamp(17px,1.6vw,21px);font-weight:500;color:var(--ink-2);margin-top:14px;line-height:1.4;letter-spacing:-.015em}
+.sub{font-size:clamp(17px,1.55vw,21px);font-weight:500;color:var(--ink-2);margin-top:12px;line-height:1.4;letter-spacing:-.015em;max-width:60ch}
 .dark .sub{color:var(--snow-2)}
+.ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none}
+.ic svg{width:22px;height:22px}
 
-/* page 1: analysis */
-.p1{display:grid;grid-template-columns:auto 1fr;gap:64px;align-items:center}
-.phone{width:min(270px,26vw);aspect-ratio:390/844;border-radius:42px;padding:10px;background:#1d1d1f;box-shadow:0 30px 80px rgba(0,0,0,.22),inset 0 0 0 2px #3a3a3c}
-.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:33px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin-top:36px}
-.stats div{border-top:1px solid var(--line);padding-top:16px}
-.stats b{display:block;font-size:clamp(44px,4.6vw,64px);font-weight:700;letter-spacing:-.045em;line-height:1}
-.stats span{display:block;margin-top:8px;font-size:16px;line-height:1.4;color:var(--ink-2)}
-.notes{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:10px}
-.notes li{position:relative;padding-left:24px;font-size:17px;font-weight:500;line-height:1.4}
-.notes li::before{content:"";position:absolute;left:0;top:.45em;width:10px;height:10px;border-radius:50%;background:var(--bad)}
+/* ---------- page 1: the map ---------- */
+.map{display:grid;grid-template-columns:1fr 64px 1.15fr 64px 1fr;align-items:center;margin-top:40px}
+.col{display:grid;gap:14px}
+.node{background:var(--card);border:1px solid var(--line-d);border-radius:18px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start}
+.node .ic{grid-row:span 2}
+.node h3{color:#fff}
+.node p{font-size:14.5px;line-height:1.4;color:var(--snow-2)}
+.node .who{display:block;font-size:12.5px;font-weight:600;color:#d6d6db;margin-top:6px}
+.hub{background:linear-gradient(160deg,#2a1a08,#1c1c1e 55%);border:1px solid #5a3a12;border-radius:24px;padding:24px;display:grid;gap:16px}
+.hub .pair{display:flex;gap:10px;align-items:center}
+.hub h3{font-size:22px;color:#fff}
+.hub ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.hub li{font-size:15px;line-height:1.4;color:#e5e5ea;padding-left:20px;position:relative}
+.hub li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;border-radius:50%;background:var(--sun)}
+.arrows{display:grid;place-items:center;color:var(--sun)}
+.arrows svg{width:40px;height:40px}
+.legend{margin-top:26px;font-size:15px;color:var(--snow-2)}
+.legend b{color:#fff;font-weight:600}
 
-/* page 2: stack */
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
-.tile{background:var(--card);border-radius:22px;padding:24px 22px;display:grid;gap:12px;align-content:start}
-.ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center}
-.ic svg{width:26px;height:26px}
-.tile h3{color:#fff;font-size:23px}
-.tile p{font-size:15.5px;line-height:1.45;color:var(--snow-2)}
-.tile .who{font-size:13.5px;color:#d6d6db;border-top:1px solid var(--line-d);padding-top:12px;margin-top:4px}
-.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:center;margin-top:18px;background:#111113;border:1px solid var(--line-d);border-radius:18px;padding:16px 20px}
-.flow div{font-size:15px;line-height:1.4;color:var(--snow-2)}
-.flow b{color:#fff;font-weight:600}
-.flow svg{width:22px;height:22px;color:var(--sun)}
-.wins{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px 28px}
-.wins li{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:500}
-.wins li::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--good) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.5l2.5 2.5L13 6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat;flex:none}
-.proto{margin-top:22px;font-size:15px;color:var(--snow-2)}
-.proto a{color:var(--sun);font-weight:600;text-decoration:none}
-.proto a:hover{text-decoration:underline}
+/* ---------- page 2: a normal week ---------- */
+.week{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.story{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:14px;align-content:start}
+.story header{display:flex;align-items:center;gap:12px}
+.story h3{font-size:21px}
+.story ol{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:st}
+.story li{counter-increment:st;display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:15.5px;line-height:1.42;color:#3a3a3c}
+.story li::before{content:counter(st);width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center}
+.story li b{color:var(--ink);font-weight:600}
+.story .end{font-size:14.5px;font-weight:600;color:var(--good);border-top:1px solid var(--line);padding-top:12px}
+.safety{margin-top:22px;display:flex;align-items:center;gap:12px;font-size:16px;color:var(--ink-2)}
+.safety b{color:var(--ink)}
 
+/* ---------- page 3: compared with the WordPress draft ---------- */
+.cmp{width:100%;border-collapse:collapse;margin-top:22px;text-align:left;font-size:clamp(14px,1.15vw,15.5px)}
+.cmp th,.cmp td{padding:9px 12px;border-bottom:1px solid var(--line-d);vertical-align:top;line-height:1.4}
+.cmp thead th{font-size:14px;font-weight:600;color:var(--snow-2);border-bottom:1px solid #8e8e93}
+.cmp thead th.us{color:var(--sun)}
+.cmp tbody th{font-weight:600;color:#fff;width:15%}
+.cmp td{color:var(--snow-2);width:40%}
+.cmp td.us{color:#fff;font-weight:500}
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.honest div{background:var(--card);border-radius:14px;padding:12px 16px;font-size:14.5px;line-height:1.45;color:var(--snow-2)}
+.honest b{display:block;color:#fff;font-size:16px;margin-bottom:4px}
+.src{margin-top:10px;font-size:12.5px;color:#86868b}
+
+.slide.tight{padding-top:36px;padding-bottom:36px}
 .counter{position:fixed;right:18px;bottom:16px;z-index:10;font-size:13px;font-weight:600;color:#f5f5f7;background:rgba(29,29,31,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:6px 12px;border-radius:999px}
 
 @media (max-width:980px){
   html{scroll-snap-type:y proximity}
-  .slide{padding:56px 22px}
-  .p1{grid-template-columns:1fr;gap:36px}
-  .phone{width:min(240px,62vw);margin:0 auto;order:2}
-  .tiles{grid-template-columns:1fr 1fr}
-  .flow{grid-template-columns:1fr}
-  .flow svg{transform:rotate(90deg)}
-}
-@media (max-width:560px){
-  .stats{gap:22px 18px}
-  .stats span{font-size:14.5px}
-  .tiles{grid-template-columns:1fr}
+  .slide{padding:52px 20px}
+  .map{grid-template-columns:1fr;gap:6px}
+  .arrows svg{transform:rotate(90deg);width:32px;height:32px}
+  .week{grid-template-columns:1fr}
+  .honest{grid-template-columns:1fr}
+  .cmp thead{display:none}
+  .cmp,.cmp tbody,.cmp tr,.cmp th,.cmp td{display:block;width:auto}
+  .cmp tbody th,.cmp td{width:auto}
+  .cmp tr{border-bottom:1px solid var(--line-d);padding:12px 0}
+  .cmp th,.cmp td{border:0;padding:3px 0}
+  .cmp td::before{content:attr(data-h);display:block;font-size:12.5px;color:#86868b;font-weight:500}
 }
 @page{size:1280px 720px;margin:0}
 @media print{html{scroll-snap-type:none}.slide{height:720px;min-height:0;break-after:page}.counter{display:none}}
@@ -87,80 +103,119 @@ h3{font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
 </head>
 <body>
 
-<!-- Page 1: the current site, in short -->
-<section class="slide light" aria-label="Current website review">
-  <div class="in p1">
-    <div class="phone"><img src="img/cur-mobile-top.jpg" alt="Current website on a phone: headline Licensed, Bonded, Insured over a New York skyline"></div>
-    <div>
-      <h2>Today's site loses calls.</h2>
-      <p class="sub">caelectricalgroup.com, checked on November 23, 2026.</p>
-      <div class="stats">
-        <div><b class="grad">5.4 s</b><span>to load on a phone. Google's target is under 2.5 s. People with no power don't wait.</span></div>
-        <div><b>658</b><span>Google reviews you've earned. The site doesn't show your rating or this number.</span></div>
-        <div><b>0</b><span>dedicated pages for EV chargers, emergency calls or knob-and-tube.</span></div>
-        <div><b>10</b><span>plugins to patch every week. Elementor Pro was mass-hacked in August 2026.</span></div>
-      </div>
-      <ul class="notes">
-        <li>First screen: no service, no city, and a New York skyline.</li>
-        <li>Special offers expired on September 1 and are still on the home page.</li>
-        <li>No real jobs anywhere, only stock photos.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+<!-- icon set -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cf" viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1 .5 9z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-astro" viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-monday" viewBox="0 0 24 24"><g fill="#fff"><circle cx="5" cy="15" r="2.4"/><circle cx="12" cy="15" r="2.4"/><circle cx="19" cy="15" r="2.4"/></g></symbol>
+  <symbol id="i-sanity" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="#fff" stroke-width="2"/><path d="M11 18h2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5M4 9h10a6 6 0 0 1 0 12h-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-<!-- Page 2: the proposed stack -->
-<section class="slide dark" aria-label="Proposed stack">
+<!-- Page 1: how the pieces connect -->
+<section class="slide dark" aria-label="How the new website works">
   <div class="in">
-    <h2>The new stack: <span class="grad">four tools, one job each.</span></h2>
-    <p class="sub">You only touch two of them: monday.com, as today, and Sanity, when you want to change a text.</p>
+    <h2>How the new site works.</h2>
+    <p class="sub">You only use two tools: monday.com, which your office already uses, and Sanity, simple fields for texts and offers. We set up Cloudflare and Astro once, and they run in the background.</p>
 
-    <div class="tiles">
-      <div class="tile">
-        <span class="ic" style="background:#f6821f"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.6-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1 .5 9z"/></svg></span>
-        <h3>Cloudflare</h3>
-        <p>Hosts the site close to every visitor, blocks attacks, runs the forms.</p>
-        <span class="who">Almost no upkeep. You already use it.</span>
+    <div class="map">
+      <div class="col" aria-label="Who puts content in">
+        <div class="node"><span class="ic" style="background:var(--monday)"><svg><use href="#i-monday"/></svg></span><h3>monday.com</h3><p>Finished jobs with before and after photos.<span class="who">Your office, as today</span></p></div>
+        <div class="node"><span class="ic" style="background:var(--sanity)"><svg><use href="#i-sanity"/></svg></span><h3>Sanity</h3><p>Texts, offers with end dates, team, FAQ.<span class="who">You or your office</span></p></div>
+        <div class="node"><span class="ic" style="background:var(--gh)"><svg><use href="#i-code"/></svg></span><h3>Site code</h3><p>Design and new pages, saved version by version.<span class="who">Us</span></p></div>
       </div>
-      <div class="tile">
-        <span class="ic" style="background:#7c3aed"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg></span>
-        <h3>Astro</h3>
-        <p>Builds the website as ready-made pages. Fast on any phone, no plugins.</p>
-        <span class="who">We build and maintain it.</span>
+      <div class="arrows" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+      <div class="hub">
+        <div class="pair"><span class="ic" style="background:var(--cf)"><svg><use href="#i-cf"/></svg></span><span class="ic" style="background:var(--astro)"><svg><use href="#i-astro"/></svg></span><h3>Cloudflare + Astro</h3></div>
+        <ul>
+          <li>Pages are built before anyone visits, so they open fast on mobile data when a homeowner taps your ad or search result.</li>
+          <li>Photos are resized and their location data removed. Only the city is shown.</li>
+          <li>Cloudflare serves the pages from servers close to each visitor and helps block attacks and bots.</li>
+          <li>A small Cloudflare function receives the forms and filters spam.</li>
+        </ul>
       </div>
-      <div class="tile">
-        <span class="ic" style="background:#ff3d57"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="5" cy="15" r="2.4"/><circle cx="12" cy="15" r="2.4"/><circle cx="19" cy="15" r="2.4"/></svg></span>
-        <h3>monday.com</h3>
-        <p>Finished jobs become project pages. Form requests land on your board.</p>
-        <span class="who">Your office, the way it works today.</span>
-      </div>
-      <div class="tile">
-        <span class="ic" style="background:#f03e2f"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg></span>
-        <h3>Sanity</h3>
-        <p>Change texts, offers, team photos and FAQ, like editing a Google Doc.</p>
-        <span class="who">You or your office, whenever you want.</span>
+      <div class="arrows" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+      <div class="col" aria-label="What comes out">
+        <div class="node"><span class="ic" style="background:#30a14e"><svg><use href="#i-phone"/></svg></span><h3>Visitors</h3><p>Fast pages on any phone, with your real jobs in their city.</p></div>
+        <div class="node"><span class="ic" style="background:var(--monday)"><svg><use href="#i-monday"/></svg></span><h3>Leads in monday.com</h3><p>Each form request becomes a new item with the service, ZIP, phone, page and ad link.</p></div>
       </div>
     </div>
-
-    <div class="flow" aria-label="How a finished job reaches the website">
-      <div><b>Job done in monday.com.</b> Photos attached, “Show on website” ticked.</div>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      <div><b>Cloudflare builds the page.</b> Only the city is published, photo location data removed.</div>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      <div><b>Live within minutes</b> on the project page, the home page and the city page.</div>
-    </div>
-
-    <ul class="wins">
-      <li>Target under 2.5 s on phones</li>
-      <li>No WordPress plugins to patch</li>
-      <li>Real jobs posted automatically</li>
-      <li>Every account in your name</li>
-    </ul>
-    <p class="proto">See the proposed design: <a href="../">open the prototype</a></p>
+    <p class="legend">Pages load as pre-built files. <b>There is no login page, PHP, database or plugin on the public site.</b></p>
   </div>
 </section>
 
-<div class="counter" aria-live="polite"><span id="cur">1</span> / 2</div>
+<!-- Page 2: a normal week, step by step -->
+<section class="slide light" aria-label="A normal week">
+  <div class="in">
+    <h2>A normal week, step by step.</h2>
+    <p class="sub">What happens when a customer reaches out, when the crew finishes a job, and when you change an offer.</p>
+
+    <div class="week">
+      <article class="story">
+        <header><span class="ic" style="background:#30a14e"><svg><use href="#i-phone"/></svg></span><h3>A homeowner needs help</h3></header>
+        <ol>
+          <li><span>Finds you on Google. <b>The page opens right away</b>, even on mobile data.</span></li>
+          <li><span>Taps <b>Call</b>, or sends the 3-step form: service, ZIP, phone.</span></li>
+          <li><span>Cloudflare checks the form for spam.</span></li>
+          <li><span><b>A form request lands in your monday.com Leads board</b> with the page and the ad link, when there is one. The office gets a monday notification.</span></li>
+        </ol>
+        <p class="end">You see which pages and ads bring requests and call-button taps.</p>
+      </article>
+      <article class="story">
+        <header><span class="ic" style="background:var(--monday)"><svg><use href="#i-monday"/></svg></span><h3>The crew finishes a job</h3></header>
+        <ol>
+          <li><span>The office marks it <b>Done</b> in monday.com and adds before and after photos, the service, the city and a short note.</span></li>
+          <li><span>Ticks <b>Show on website</b>.</span></li>
+          <li><span>Cloudflare builds the project page. Address and customer name stay in monday.</span></li>
+          <li><span><b>Published automatically</b>, usually within minutes, on its own page, the home page and the city page.</span></li>
+        </ol>
+        <p class="end">Every real job adds local proof for that city.</p>
+      </article>
+      <article class="story">
+        <header><span class="ic" style="background:var(--sanity)"><svg><use href="#i-sanity"/></svg></span><h3>You change an offer</h3></header>
+        <ol>
+          <li><span>Open Sanity and <b>sign in with Google</b>.</span></li>
+          <li><span>Change the amount, the text or the <b>end date</b>. Fields only, so the design can't break.</span></li>
+          <li><span>Press <b>Publish</b>.</span></li>
+          <li><span>The site updates within minutes. <b>Offers stop showing after their end date.</b></span></li>
+        </ol>
+        <p class="end">No developer needed for everyday changes.</p>
+      </article>
+    </div>
+    <p class="safety"><svg width="22" height="22" aria-hidden="true"><use href="#i-undo"/></svg><span><b>If something goes wrong:</b> every published version is saved, so we can bring the previous one back in one click. Sanity keeps your recent text edits. Bigger changes are checked on a private preview link first.</span></p>
+  </div>
+</section>
+
+<!-- Page 3: compared with the WordPress draft -->
+<section class="slide dark tight" aria-label="Compared with the WordPress draft">
+  <div class="in">
+    <h2>Why this, and not the <span class="grad">WordPress draft.</span></h2>
+    <p class="sub">The draft is a good start on the design. The difference is the platform under it.</p>
+    <table class="cmp">
+      <thead><tr><th scope="col"></th><th scope="col">WordPress draft</th><th scope="col" class="us">New stack</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Pages</th><td data-h="WordPress draft">Made by PHP on shared Hostinger hosting. Page caching can be added later, but PHP and plugins still run underneath</td><td class="us" data-h="New stack">Built once in advance and served ready from Cloudflare</td></tr>
+        <tr><th scope="row">Security</th><td data-h="WordPress draft">Login page open on the draft, plus PHP, plugins and a database that need hardening and updates</td><td class="us" data-h="New stack">No login, PHP or database on the public site. Editing is in Sanity, behind Google sign-in</td></tr>
+        <tr><th scope="row">Upkeep</th><td data-h="WordPress draft">WordPress, PHP, the Blocksy theme and Pro add-on, the page builder and the reviews plugin all need regular updates</td><td class="us" data-h="New stack">No plugins to update or to break the site. The code only needs updates when we add features</td></tr>
+        <tr><th scope="row">Editing</th><td data-h="WordPress draft">WordPress admin and page-builder blocks. Flexible, and easier to shift the layout by accident</td><td class="us" data-h="New stack">Simple fields in Sanity: text, photo, date. The design stays intact</td></tr>
+        <tr><th scope="row">Your jobs</th><td data-h="WordPress draft">Copied in by hand, or a paid connector or custom plugin to keep running</td><td class="us" data-h="New stack">Built in. Tick a box in monday.com</td></tr>
+        <tr><th scope="row">Leads</th><td data-h="WordPress draft">No form on the draft yet. Sending WordPress leads to monday usually needs a paid add-on or a connector like Zapier</td><td class="us" data-h="New stack">Every form request lands in monday.com with its page and ad link</td></tr>
+        <tr><th scope="row">Mistakes</th><td data-h="WordPress draft">Page revisions undo text edits. Plugin or update problems mean restoring files and database from a backup</td><td class="us" data-h="New stack">Any earlier site build restored in one click. Sanity keeps recent text edits</td></tr>
+        <tr><th scope="row">Cost</th><td data-h="WordPress draft">Hosting plan, plus theme or plugin licenses if the developer's don't cover them</td><td class="us" data-h="New stack">Free plans of Cloudflare and Sanity fit a site this size. monday.com stays on your current plan</td></tr>
+      </tbody>
+    </table>
+    <div class="honest">
+      <div><b>Where WordPress is stronger</b>A familiar admin, many freelancers, and thousands of ready-made plugins.</div>
+      <div><b>How we cover that</b>Sanity is simpler than the WordPress admin. Astro is a standard, widely used tool. Every account is in your name, so any developer can take over.</div>
+    </div>
+    <p class="src">WordPress draft checked on November 24, 2026: WordPress 7.1.5 on PHP 8.3, Hostinger hosting, Blocksy theme with Blocksy Companion Pro, Greenshift blocks.</p>
+  </div>
+</section>
+
+<div class="counter" aria-live="polite"><span id="cur">1</span> / 3</div>
 <script>
 (function(){
   const slides=[...document.querySelectorAll('.slide')];
@@ -168,8 +223,9 @@ h3{font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
     if(e.isIntersecting)document.getElementById('cur').textContent=slides.indexOf(e.target)+1;
   }),{threshold:.55});
   slides.forEach(s=>io.observe(s));
+  const at=()=>{let best=0,d=1e9;slides.forEach((s,i)=>{const t=Math.abs(s.getBoundingClientRect().top);if(t<d){d=t;best=i}});return best};
   document.addEventListener('keydown',e=>{
-    const i=Math.round(scrollY/innerHeight);
+    const i=at();
     if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();slides[Math.min(slides.length-1,i+1)].scrollIntoView({behavior:'smooth'})}
     if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();slides[Math.max(0,i-1)].scrollIntoView({behavior:'smooth'})}
   });
